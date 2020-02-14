@@ -26,15 +26,6 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
                     </ul>
                 </nav>
             </div>
@@ -43,7 +34,22 @@
 
     <div class="container-xl">        
         <div class="text-white p-4 text-center">
-            <h2 class="text-white m-0">Movies</h2>
+            <div class="row">
+                <div class="col-10 offset-1">
+                    <h2 class="text-white m-0">Movies</h2>
+                </div>
+                <div class="col-lg-1">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" id="sortLikesAscending">Sort by most likes</a>
+                        <a class="dropdown-item" id="doNotSort">Do not sort</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row text-center" id="moviecards"></div>
     </div>
@@ -56,52 +62,12 @@
   
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/myscript.js"></script>
 
     <script>
-        for (let i in moviedata.movies) {
-            $('#moviecards').append(`
-            <div class="card text-white my-4 p-1 col-lg-5 col-md-5 bg-dark offset-1 offset-md-1 offset-sm-0 offset-xs-0">
-                <div class="row no-gutters">
-                    <div class="col-lg-3 col-md-4 col-sm-4">
-                        <img src="${moviedata.movies[i].image}" class="card-img" alt="${moviedata.movies[i].name}" data-toggle="modal" data-target="#modal${moviedata.movies[i].id}">
-                    </div>
-                    <div class="col-lg-9 col-md-8 col-sm-8">
-                        <div class="card-body text-left">
-                            <h5 class="card-title" data-toggle="modal" data-target="#modal${moviedata.movies[i].id}">${moviedata.movies[i].name}</h5>
-                            <p class="card-text text-truncate" data-toggle="modal" data-target="#modal${moviedata.movies[i].id}"><small>${moviedata.movies[i].info}</small></p>
-                            <h4 class="card-text text-right text-success" id="l${moviedata.movies[i].id}"><small>Like&nbsp;<i class="fa fa-thumbs-up"></i></small>&nbsp;&nbsp;<span class="badge badge-success rounded-circle">${moviedata.movies[i].likes}</span></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="modal${moviedata.movies[i].id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content bg-secondary text-white">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">${moviedata.movies[i].name}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p><img src="${moviedata.movies[i].image}" class="img-fluid" alt="${moviedata.movies[i].name}"></p>
-                            <h3>${moviedata.movies[i].name}</h3>
-                            <p>${moviedata.movies[i].info}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `)
-
-            let likeLink = '#l' + moviedata.movies[i].id;
-
-            $(likeLink).click(function() {
-                let likedMovie = likeLink.slice(2);
-                console.log(likedMovie);
-                moviedata.movies[likedMovie].liked = String(parseInt(moviedata.movies[likedMovie].liked) + 1);
-                console.log(moviedata.movies[likedMovie].liked);
-            });
-        }
+        $( document ).ready(function() {
+            generateMovies();
+        });
     </script>
 
   </body>
