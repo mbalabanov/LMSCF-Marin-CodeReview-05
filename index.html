@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="json/movies.js"></script>
+</head>
+
+<body class="bg-secondary">
+    <header class="text-white text-center">
+        <div class="py-3 bg-primary ">
+            <h1 class="text-white m-0">Movie Factory</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-xl">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <nav class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-xl">        
+        <div class="text-white p-4 text-center">
+            <h2 class="text-white m-0">Movies</h2>
+        </div>
+        <div class="row text-center" id="moviecards"></div>
+    </div>
+
+    <footer class="py-4 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Movie Factory</p>
+        </div>
+    </footer>
+  
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        for (let i in moviedata.movies) {
+            $('#moviecards').append(`
+            <div class="card text-white my-4 p-1 col-lg-5 col-md-5 bg-dark offset-1 offset-md-1 offset-sm-0 offset-xs-0">
+                <div class="row no-gutters">
+                    <div class="col-lg-3 col-md-4 col-sm-4">
+                        <img src="${moviedata.movies[i].image}" class="card-img" alt="${moviedata.movies[i].name}" data-toggle="modal" data-target="#modal${moviedata.movies[i].id}">
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8">
+                        <div class="card-body text-left">
+                            <h5 class="card-title" data-toggle="modal" data-target="#modal${moviedata.movies[i].id}">${moviedata.movies[i].name}</h5>
+                            <p class="card-text text-truncate" data-toggle="modal" data-target="#modal${moviedata.movies[i].id}"><small>${moviedata.movies[i].info}</small></p>
+                            <h4 class="card-text text-right text-success" id="l${moviedata.movies[i].id}"><small>Like&nbsp;<i class="fa fa-thumbs-up"></i></small>&nbsp;&nbsp;<span class="badge badge-success rounded-circle">${moviedata.movies[i].likes}</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal${moviedata.movies[i].id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content bg-secondary text-white">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">${moviedata.movies[i].name}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p><img src="${moviedata.movies[i].image}" class="img-fluid" alt="${moviedata.movies[i].name}"></p>
+                            <h3>${moviedata.movies[i].name}</h3>
+                            <p>${moviedata.movies[i].info}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `)
+
+            let likeLink = '#l' + moviedata.movies[i].id;
+
+            $(likeLink).click(function() {
+                let likedMovie = likeLink.slice(2);
+                console.log(likedMovie);
+                moviedata.movies[likedMovie].liked = String(parseInt(moviedata.movies[likedMovie].liked) + 1);
+                console.log(moviedata.movies[likedMovie].liked);
+            });
+        }
+    </script>
+
+  </body>
+
+</html>
