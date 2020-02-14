@@ -26,14 +26,14 @@ let moviedata = JSON.parse(`{
         "name": "Bad Times at the El Royale",
         "info": "Early 1970s. Four strangers check in at the El Royale Hotel. The hotel is deserted, staffed by a single desk clerk. Some of the new guests' reasons for being there are less than innocent and some are not who they appear to be.",
         "image": "img/04_el_royale.jpg",
-        "likes": "5"
+        "likes": "0"
         },
         {
         "id": "4",
         "name": "Mandy",
         "info": "The enchanted lives of a couple in a secluded forest are brutally shattered by a nightmarish hippie cult and their demon-biker henchmen, propelling a man into a spiraling, surreal rampage of vengeance.",
         "image": "img/05_mandy.jpg",
-        "likes": "3"
+        "likes": "0"
         },
         {
         "id": "5",
