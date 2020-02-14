@@ -70,9 +70,11 @@ function setEventListeners() {
 $('#sortLikesAscending').click(function() {
     sortByLikes = true;
     generateMovies();
+    $('#sortStatus').replaceWith(`<div id="sortStatus"><small>Sorted by likes</small></div>`);
 });
 
 $('#doNotSort').click(function() {
     sortByLikes = false;
     generateMovies();
+    $('#sortStatus').replaceWith(`<div id="sortStatus"><small>Unsorted</small></div>`);
 });
