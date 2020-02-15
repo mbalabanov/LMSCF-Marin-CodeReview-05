@@ -20,9 +20,9 @@ let movieListContent = '';
 let sequence = [];
 
 /* Generates the movie list by checking the settings for sorting.
-    If sort by likes is selected, the array in the variable with the JSON data is sorted by the number of likes.
-    If unsorted is selected, then the array in the variable with the JSON data is sorted by item ID.
-    Then iterating through the JSON data. Storing the constructed HTML in a variable and rendering it into the div.
+    If "sort by likes" is selected, the array in the variable with the JSON data is sorted by the number of likes.
+    If "unsorted" is selected, then the array in the variable with the JSON data is sorted by item ID.
+    Then the JSON data is iterated. The constructed HTML is stored in a variable and rendering it into the div.
     Each movie item has an accompanying modal that is invisible to the user, until they click on a movie.*/
 function generateMovies() {
     movieListContent = '';
@@ -81,11 +81,11 @@ function generateMovies() {
     setEventListeners();
 };
 
-/* This sets the event listeners to the like buttons after the HTML is rendered.
+/* This sets the event listeners to the "like" buttons after the HTML is rendered.
     When a user clicks on "like", then the ID of the movie is read.
     The number of likes the variable containing the JSON data are incremented.
     The movie list is rendered into the HTML again to reflect the new number of likes.
-    This rendering also changes the order of the items, if sort by likes is selected. */
+    This rendering also changes the order of the items, if "sort by likes" is selected. */
 function setEventListeners() {
     $('.likeMe').click(function() {
         moviedata.movies[this.id].likes ++;
@@ -93,14 +93,14 @@ function setEventListeners() {
     });
 };
 
-/* When a user selects a sorting setting in the dropdown menu, the sortByLikes variable is set to true. */
+/* When a user selects a sorting setting in the dropdown menu, the sortByLikes variable is set to TRUE. */
 $('#sortLikesAscending').click(function() {
     sortByLikes = true;
     generateMovies();
     $('#sortStatus').replaceWith(`<div id="sortStatus"><small>Sorted by likes</small></div>`);
 });
 
-/* When a user selects a sorting setting in the dropdown menu, the sortByLikes variable is set to false. */
+/* When a user selects a sorting setting in the dropdown menu, the sortByLikes variable is set to FALSE. */
 $('#doNotSort').click(function() {
     sortByLikes = false;
     generateMovies();
