@@ -42,7 +42,7 @@ function generateMovies() {
     };
     for (let tempID in sequence) {
         movieListContent += `
-        <div class="card text-white m-4 p-1 col-lg-5 col-md-5 col-sm-5 bg-dark">
+        <div class="card text-white m-4 p-1 col-lg-5 col-md-5 col-sm-4 bg-dark">
             <div class="row no-gutters">
                 <div class="col-lg-3 col-md-4 col-sm-12">
                     <img src="${moviedata.movies[tempID].image}" class="card-img" alt="${moviedata.movies[tempID].name}" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}">
