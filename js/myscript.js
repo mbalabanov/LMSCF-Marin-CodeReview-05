@@ -22,7 +22,7 @@ function generateMovies() {
     };
     for (let tempID in sequence) {
         movieListContent += `
-        <div class="card text-white m-4 p-1 col-lg-5 col-md-5 col-sm-12  bg-dark">
+        <div class="card text-white m-4 p-1 col-lg-5 col-md-5 col-sm-5 bg-dark">
             <div class="row no-gutters">
                 <div class="col-lg-3 col-md-4 col-sm-12">
                     <img src="${moviedata.movies[tempID].image}" class="card-img" alt="${moviedata.movies[tempID].name}" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}">
@@ -31,9 +31,6 @@ function generateMovies() {
                     <div class="card-body text-left">
                         <h5 class="card-title" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}">${moviedata.movies[tempID].name}</h5>
                         <p class="card-text text-truncate" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}"><small>${moviedata.movies[tempID].info}</small></p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        <h4 class="card-text text-right text-success likeMe" id="${tempID}"><small>Like&nbsp;<i class="fa fa-thumbs-up"></i></small>&nbsp;&nbsp;<span class="badge badge-success rounded-circle">${moviedata.movies[tempID].likes}</span></h4>
                     </div>
                     <div class="card-footer">
                         <h4 class="card-text text-right text-success likeMe" id="${tempID}"><small>Like&nbsp;<i class="fa fa-thumbs-up"></i></small>&nbsp;&nbsp;<span class="badge badge-success rounded-circle">${moviedata.movies[tempID].likes}</span></h4>
@@ -51,7 +48,7 @@ function generateMovies() {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p><img src="${moviedata.movies[tempID].image}" class="img-fluid" alt="${moviedata.movies[tempID].name}"></p>
+                        <p><img src="${moviedata.movies[tempID].image}" class="img-fluid close" data-dismiss="modal" alt="${moviedata.movies[tempID].name}"></p>
                         <h3>${moviedata.movies[tempID].name}</h3>
                         <p>${moviedata.movies[tempID].info}</p>
                     </div>
