@@ -1,9 +1,29 @@
+/*───────────────────────────────────────────────────────┐
+│       _                   _____           _       _    │
+│      | |                 / ____|         (_)     | |   │
+│      | | __ ___   ____ _| (___   ___ _ __ _ _ __ | |_  │
+│  _   | |/ _` \ \ / / _` |\___ \ / __| '__| | '_ \| __| │
+│ | |__| | (_| |\ V / (_| |____) | (__| |  | | |_) | |_  │
+│  \____/ \__,_| \_/ \__,_|_____/ \___|_|  |_| .__/ \__| │
+│                                            |_|         │
+│               __  __            _                      │
+│              |  \/  |          (_)                     │
+│              | \  / | __ _ _ __ _ _ __                 │
+│              | |\/| |/ _` | '__| | '_ \                │
+│              | |  | | (_| | |  | | | | |               │
+│              |_|  |_|\__,_|_|  |_|_| |_|               │
+└───────────────────────────────────────────────────────*/
+
+/* Initializing variables */
 let sortByLikes = false;
 let movieListContent = '';
 let sequence = [];
-let tempAusgabe = '';
-let tempAusgabe2 = '';
 
+/* Generates the movie list by checking the settings for sorting.
+    If sort by likes is selected, the array in the variable with the JSON data is sorted by the number of likes.
+    If unsorted is selected, then the array in the variable with the JSON data is sorted by item ID.
+    Then iterating through the JSON data. Storing the constructed HTML in a variable and rendering it into the div.
+    Each movie item has an accompanying modal that is invisible to the user, until they click on a movie.*/
 function generateMovies() {
     movieListContent = '';
     $('#moviecards').replaceWith(`<div class="row text-center" id="moviecards"></div>`);
@@ -61,22 +81,30 @@ function generateMovies() {
     setEventListeners();
 };
 
+/* This sets the event listeners to the like buttons after the HTML is rendered.
+    When a user clicks on "like", then the ID of the movie is read.
+    The number of likes the variable containing the JSON data are incremented.
+    The movie list is rendered into the HTML again to reflect the new number of likes.
+    This rendering also changes the order of the items, if sort by likes is selected. */
 function setEventListeners() {
     $('.likeMe').click(function() {
         moviedata.movies[this.id].likes ++;
-        console.log(moviedata.movies);
         generateMovies();
     });
 };
 
+/* When a user selects a sorting setting in the dropdown menu, the sortByLikes variable is set to true. */
 $('#sortLikesAscending').click(function() {
     sortByLikes = true;
     generateMovies();
     $('#sortStatus').replaceWith(`<div id="sortStatus"><small>Sorted by likes</small></div>`);
 });
 
+/* When a user selects a sorting setting in the dropdown menu, the sortByLikes variable is set to false. */
 $('#doNotSort').click(function() {
     sortByLikes = false;
     generateMovies();
     $('#sortStatus').replaceWith(`<div id="sortStatus"><small>Unsorted</small></div>`);
 });
+
+/* Exercise solved by Marin on Saturday, February 15, 2020 */

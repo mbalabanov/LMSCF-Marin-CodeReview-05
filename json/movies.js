@@ -1,3 +1,22 @@
+/*─────────────────────────────────────────────────────┐
+│       _  _____  ____  _   _   _____        _         │
+│      | |/ ____|/ __ \| \ | | |  __ \      | |        │
+│      | | (___ | |  | |  \| | | |  | | __ _| |_ __ _  │
+│  _   | |\___ \| |  | | . ` | | |  | |/ _` | __/ _` | │
+│ | |__| |____) | |__| | |\  | | |__| | (_| | || (_| | │
+│  \____/|_____/ \____/|_| \_| |_____/ \__,_|\__\__,_| │
+│              __  __            _                     │
+│             |  \/  |          (_)                    │
+│             | \  / | __ _ _ __ _ _ __                │
+│             | |\/| |/ _` | '__| | '_ \               │
+│             | |  | | (_| | |  | | | | |              │
+│             |_|  |_|\__,_|_|  |_|_| |_|              │
+└─────────────────────────────────────────────────────*/
+/* The movies are stored in valid JSON format with a name assigned to the array.
+    The data is parsed and stored in the variable for later use.
+    The JSON file is linked on the top of the HTML page.
+    The variable is initialized as soon as the page loads.*/
+
 let moviedata = JSON.parse(`{
     "movies": [
         {
@@ -44,3 +63,5 @@ let moviedata = JSON.parse(`{
         }
     ]
 }`)
+
+/* Exercise solved by Marin on Saturday, February 15, 2020 */
