@@ -31,6 +31,8 @@ function generateMovies() {
                     <div class="card-body text-left">
                         <h5 class="card-title" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}">${moviedata.movies[tempID].name}</h5>
                         <p class="card-text text-truncate" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}"><small>${moviedata.movies[tempID].info}</small></p>
+                    </div>
+                    <div class="card-footer text-muted">
                         <h4 class="card-text text-right text-success likeMe" id="${tempID}"><small>Like&nbsp;<i class="fa fa-thumbs-up"></i></small>&nbsp;&nbsp;<span class="badge badge-success rounded-circle">${moviedata.movies[tempID].likes}</span></h4>
                     </div>
                     <div class="card-footer">
