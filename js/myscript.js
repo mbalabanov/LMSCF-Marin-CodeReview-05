@@ -25,7 +25,7 @@ function generateMovies() {
         <div class="card text-white m-4 p-1 col-lg-5 col-md-5 col-sm-5 bg-dark">
             <div class="row no-gutters">
                 <div class="col-lg-3 col-md-4 col-sm-12">
-                    <img src="${moviedata.movies[tempID].image}" class="card-img" alt="${moviedata.movies[tempID].name}" data-toggle="modal tooltip" data-placement="bottom" title="Click for more information" data-target="#modal${moviedata.movies[tempID].id}">
+                    <img src="${moviedata.movies[tempID].image}" class="card-img" alt="${moviedata.movies[tempID].name}" data-toggle="modal" data-target="#modal${moviedata.movies[tempID].id}">
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-12">
                     <div class="card-body text-left">
